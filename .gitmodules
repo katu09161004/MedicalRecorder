@@ -1,0 +1,9 @@
+[submodule "AI Voive Watch/AI Voice Watch"]
+	path = AI Voive Watch/AI Voice Watch
+	url = http://local_proxy@127.0.0.1:17725/git/katu09161004/AI-Voice-Watch
+[submodule "AI Voive Watch/claud_swift_project/VoiceTranscriptionApp"]
+	path = AI Voive Watch/claud_swift_project/VoiceTranscriptionApp
+	url = http://local_proxy@127.0.0.1:17725/git/katu09161004/VoiceWriter
+[submodule "MedicalRecorder"]
+	path = MedicalRecorder
+	url = http://local_proxy@127.0.0.1:17725/git/katu09161004/MedicalRecorder

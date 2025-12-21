@@ -40,7 +40,7 @@ enum TranscriptionProvider: String, CaseIterable, Identifiable {
         }
     }
     
-    // API仕様
+    // API仕様 - 時間制限
     var maxDuration: TimeInterval {
         switch self {
         case .sakura:
@@ -51,11 +51,24 @@ enum TranscriptionProvider: String, CaseIterable, Identifiable {
             return 3600 // 60分（AmiVoice Cloud の一般的な制限）
         }
     }
-    
+
+    // API仕様 - ファイルサイズ制限（バイト単位）
+    var maxFileSize: Int64 {
+        switch self {
+        case .sakura:
+            return 30 * 1024 * 1024 // 30MB
+        case .aquaVoice:
+            return 100 * 1024 * 1024 // 100MB（仮定）
+        case .amiVoice:
+            return 50 * 1024 * 1024 // 50MB（仮定）
+        }
+    }
+
+    // 分割が必要かどうか
     var needsSplitting: Bool {
         switch self {
         case .sakura:
-            return true // 30分制限
+            return true // 30分/30MB制限
         case .aquaVoice:
             return false // 長時間対応（要確認）
         case .amiVoice:

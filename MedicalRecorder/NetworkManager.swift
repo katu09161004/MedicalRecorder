@@ -79,16 +79,33 @@ class NetworkManager: ObservableObject {
         print("🔧 APIプロバイダー: \(settings.transcriptionProvider.displayName)")
         print("✅ 設定確認済み")
         
-        // 音声の長さをチェック
+        // 音声の長さとファイルサイズをチェック
         if let duration = Recorder.getAudioDuration(url: audioURL) {
             print("⏱️ 録音時間: \(Int(duration))秒 (\(Int(duration/60))分)")
-            
-            // プロバイダーの制限時間を確認
+
+            // ファイルサイズをチェック
+            var fileSize: Int64 = 0
+            if let attributes = try? FileManager.default.attributesOfItem(atPath: audioURL.path) {
+                fileSize = attributes[.size] as? Int64 ?? 0
+                print("📁 ファイルサイズ: \(fileSize / 1024 / 1024)MB (\(fileSize)バイト)")
+            }
+
+            // プロバイダーの制限を確認
             let maxDuration = settings.transcriptionProvider.maxDuration
-            
+            let maxFileSize = settings.transcriptionProvider.maxFileSize
+
             // 制限を超える場合は分割処理（プロバイダーが分割必要な場合のみ）
-            if duration > maxDuration && settings.transcriptionProvider.needsSplitting {
-                print("⚠️ \(Int(maxDuration/60))分を超えているため分割処理を開始します")
+            let needsDurationSplit = duration > maxDuration
+            let needsSizeSplit = fileSize > maxFileSize
+
+            if (needsDurationSplit || needsSizeSplit) && settings.transcriptionProvider.needsSplitting {
+                if needsDurationSplit && needsSizeSplit {
+                    print("⚠️ 時間(\(Int(maxDuration/60))分)とサイズ(\(maxFileSize / 1024 / 1024)MB)の両制限を超えているため分割処理を開始します")
+                } else if needsDurationSplit {
+                    print("⚠️ \(Int(maxDuration/60))分を超えているため分割処理を開始します")
+                } else {
+                    print("⚠️ \(maxFileSize / 1024 / 1024)MBを超えているため分割処理を開始します")
+                }
                 handleLongAudio(audioURL: audioURL, mode: mode, customPrompt: customPrompt, completion: completion)
                 return
             }
@@ -102,14 +119,18 @@ class NetworkManager: ObservableObject {
     private func handleLongAudio(audioURL: URL, mode: ProcessingMode, customPrompt: String, completion: @escaping (Bool) -> Void) {
         Task {
             do {
-                // 音声を分割（プロバイダーの制限時間に応じて）
-                let splitDuration = settings.transcriptionProvider.maxDuration * 0.95 // 5%のマージンを確保
+                // 分割基準を作成（時間とファイルサイズの両方を考慮）
+                let criteria = AudioSplitter.SplitCriteria(
+                    maxDuration: settings.transcriptionProvider.maxDuration * 0.95,  // 5%のマージン
+                    maxFileSize: Int64(Double(settings.transcriptionProvider.maxFileSize) * 0.93)  // 7%のマージン
+                )
 
                 await MainActor.run {
-                    self.processingMessage = "\(Int(settings.transcriptionProvider.maxDuration/60))分以上の音声を分割しています..."
+                    self.processingMessage = "音声ファイルを分割しています..."
                 }
 
-                let splitURLs = try await AudioSplitter.splitAudio(sourceURL: audioURL, maxDuration: splitDuration)
+                // 時間とファイルサイズの両方を考慮して分割
+                let splitURLs = try await AudioSplitter.splitAudioWithCriteria(sourceURL: audioURL, criteria: criteria)
 
                 print("✅ 音声を\(splitURLs.count)個に分割しました")
 

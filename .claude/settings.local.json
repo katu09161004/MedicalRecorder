@@ -5,7 +5,8 @@
       "Bash(git commit:*)",
       "Bash(gh repo list:*)",
       "Bash(git remote add:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(xcodebuild:*)"
     ],
     "deny": [],
     "ask": []

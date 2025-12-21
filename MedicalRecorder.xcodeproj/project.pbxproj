@@ -6,19 +6,95 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		410AE6622EE755F7005416C0 /* AI Voice Watch.app in Resources */ = {isa = PBXBuildFile; fileRef = 410AE65D2EE75591005416C0 /* AI Voice Watch.app */; };
+		4181B1292EF174BE007C3246 /* SPECIFICATION.md in Resources */ = {isa = PBXBuildFile; fileRef = 4181B1282EF174BE007C3246 /* SPECIFICATION.md */; };
+		4181B12E2EF174D8007C3246 /* CHANGELOG_2025-12-16.md in Resources */ = {isa = PBXBuildFile; fileRef = 4181B12D2EF174D8007C3246 /* CHANGELOG_2025-12-16.md */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		410AE65C2EE75591005416C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 410AE6472EE75173005416C0 /* AI Voice Watch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4192656C2EB927BE00EAB835;
+			remoteInfo = "AI Voice Watch";
+		};
+		4121837C2EE76B070023B800 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 419265382EB8C90D00EAB835 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 415DC5B62EBA92D900E34725;
+			remoteInfo = "AI Voice Watch";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		415DC5D02EBA92DC00E34725 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		410A359F2EDB8A5400874855 /* AI Voice Watch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "AI Voice Watch.xcodeproj"; sourceTree = "<group>"; };
+		410AE6472EE75173005416C0 /* AI Voice Watch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "AI Voice Watch.xcodeproj"; sourceTree = "<group>"; };
+		410AE66B2EE7649A005416C0 /* AI-Voice-Watch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "AI-Voice-Watch-Info.plist"; sourceTree = "<group>"; };
+		4121836D2EE766000023B800 /* AI Voice Watch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "AI Voice Watch.xcodeproj"; sourceTree = "<group>"; };
+		4156D44D2EF0D0C700C1D754 /* AI Voice Watch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "AI Voice Watch.xcodeproj"; sourceTree = "<group>"; };
+		415DC5B72EBA92D900E34725 /* AI Voice Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AI Voice Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		415DC5D92EBA99EE00E34725 /* AI Voice Watch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "AI Voice Watch.xcodeproj"; sourceTree = "<group>"; };
+		4181B1222EF0D75D007C3246 /* AI Voice Watch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "AI Voice Watch.xcodeproj"; sourceTree = "<group>"; };
+		4181B1282EF174BE007C3246 /* SPECIFICATION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = SPECIFICATION.md; sourceTree = "<group>"; };
+		4181B12D2EF174D8007C3246 /* CHANGELOG_2025-12-16.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "CHANGELOG_2025-12-16.md"; sourceTree = "<group>"; };
 		419265402EB8C90D00EAB835 /* MedicalRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicalRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		419F92EA2EE397B600061FA5 /* AI Voice Watch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "AI Voice Watch.xcodeproj"; sourceTree = "<group>"; };
+		419F93012EE39FB700061FA5 /* AudioConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioConverter.swift; sourceTree = "<group>"; };
+		41AC156B2EE137F00014E996 /* AI Voice Watch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "AI Voice Watch.xcodeproj"; sourceTree = "<group>"; };
+		41BBC8F72EE1492D009239BD /* AI Voice Watch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "AI Voice Watch.xcodeproj"; sourceTree = "<group>"; };
+		41D3370D2EF1A6BD0089CF3E /* AI Voice Watch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "AI Voice Watch.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		4192655B2EB8ED8800EAB835 /* Exceptions for "MedicalRecorder" folder in "MedicalRecorder" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 4192653F2EB8C90D00EAB835 /* MedicalRecorder */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		415DC5C72EBA92DB00E34725 /* AI Voice Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "AI Voice Watch App";
+			sourceTree = "<group>";
+		};
 		419265422EB8C90D00EAB835 /* MedicalRecorder */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4192655B2EB8ED8800EAB835 /* Exceptions for "MedicalRecorder" folder in "MedicalRecorder" target */,
+			);
 			path = MedicalRecorder;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		415DC5B42EBA92D900E34725 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4192653D2EB8C90D00EAB835 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -29,11 +105,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		410A35A32EDB8A5400874855 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		410AE64B2EE75173005416C0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				410AE65D2EE75591005416C0 /* AI Voice Watch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		410AE6562EE75590005416C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		412183712EE766000023B800 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4156D4512EF0D0C700C1D754 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		415DC5DA2EBA99EE00E34725 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4181B1262EF0D75D007C3246 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		419265372EB8C90D00EAB835 = {
 			isa = PBXGroup;
 			children = (
+				410AE66B2EE7649A005416C0 /* AI-Voice-Watch-Info.plist */,
+				4181B1282EF174BE007C3246 /* SPECIFICATION.md */,
+				4181B12D2EF174D8007C3246 /* CHANGELOG_2025-12-16.md */,
 				419265422EB8C90D00EAB835 /* MedicalRecorder */,
+				415DC5C72EBA92DB00E34725 /* AI Voice Watch App */,
 				419265412EB8C90D00EAB835 /* Products */,
+				419F93012EE39FB700061FA5 /* AudioConverter.swift */,
+				410AE6562EE75590005416C0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -41,6 +173,35 @@
 			isa = PBXGroup;
 			children = (
 				419265402EB8C90D00EAB835 /* MedicalRecorder.app */,
+				415DC5B72EBA92D900E34725 /* AI Voice Watch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		419F92EE2EE397B600061FA5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		41AC156F2EE137F00014E996 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		41BBC8FB2EE1492D009239BD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		41D337112EF1A6BD0089CF3E /* Products */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +209,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		415DC5B62EBA92D900E34725 /* AI Voice Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 415DC5D42EBA92DC00E34725 /* Build configuration list for PBXNativeTarget "AI Voice Watch" */;
+			buildPhases = (
+				415DC5B32EBA92D900E34725 /* Sources */,
+				415DC5B42EBA92D900E34725 /* Frameworks */,
+				415DC5B52EBA92D900E34725 /* Resources */,
+				415DC5D02EBA92DC00E34725 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AI Voice Watch";
+			packageProductDependencies = (
+			);
+			productName = "AI Voice Watch";
+			productReference = 415DC5B72EBA92D900E34725 /* AI Voice Watch.app */;
+			productType = "com.apple.product-type.application";
+		};
 		4192653F2EB8C90D00EAB835 /* MedicalRecorder */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4192654B2EB8C90F00EAB835 /* Build configuration list for PBXNativeTarget "MedicalRecorder" */;
@@ -59,6 +240,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4121837D2EE76B070023B800 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				419265422EB8C90D00EAB835 /* MedicalRecorder */,
@@ -77,9 +259,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2600;
-				LastUpgradeCheck = 2600;
+				LastSwiftUpdateCheck = 2610;
+				LastUpgradeCheck = 2610;
 				TargetAttributes = {
+					415DC5B62EBA92D900E34725 = {
+						CreatedOnToolsVersion = 26.0.1;
+					};
 					4192653F2EB8C90D00EAB835 = {
 						CreatedOnToolsVersion = 26.0.1;
 					};
@@ -97,24 +282,94 @@
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 419265412EB8C90D00EAB835 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 419F92EE2EE397B600061FA5 /* Products */;
+					ProjectRef = 419F92EA2EE397B600061FA5 /* AI Voice Watch.xcodeproj */;
+				},
+				{
+					ProductGroup = 410AE64B2EE75173005416C0 /* Products */;
+					ProjectRef = 410AE6472EE75173005416C0 /* AI Voice Watch.xcodeproj */;
+				},
+				{
+					ProductGroup = 4156D4512EF0D0C700C1D754 /* Products */;
+					ProjectRef = 4156D44D2EF0D0C700C1D754 /* AI Voice Watch.xcodeproj */;
+				},
+				{
+					ProductGroup = 41AC156F2EE137F00014E996 /* Products */;
+					ProjectRef = 41AC156B2EE137F00014E996 /* AI Voice Watch.xcodeproj */;
+				},
+				{
+					ProductGroup = 41BBC8FB2EE1492D009239BD /* Products */;
+					ProjectRef = 41BBC8F72EE1492D009239BD /* AI Voice Watch.xcodeproj */;
+				},
+				{
+					ProductGroup = 412183712EE766000023B800 /* Products */;
+					ProjectRef = 4121836D2EE766000023B800 /* AI Voice Watch.xcodeproj */;
+				},
+				{
+					ProductGroup = 41D337112EF1A6BD0089CF3E /* Products */;
+					ProjectRef = 41D3370D2EF1A6BD0089CF3E /* AI Voice Watch.xcodeproj */;
+				},
+				{
+					ProductGroup = 410A35A32EDB8A5400874855 /* Products */;
+					ProjectRef = 410A359F2EDB8A5400874855 /* AI Voice Watch.xcodeproj */;
+				},
+				{
+					ProductGroup = 4181B1262EF0D75D007C3246 /* Products */;
+					ProjectRef = 4181B1222EF0D75D007C3246 /* AI Voice Watch.xcodeproj */;
+				},
+				{
+					ProductGroup = 415DC5DA2EBA99EE00E34725 /* Products */;
+					ProjectRef = 415DC5D92EBA99EE00E34725 /* AI Voice Watch.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4192653F2EB8C90D00EAB835 /* MedicalRecorder */,
+				415DC5B62EBA92D900E34725 /* AI Voice Watch */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		410AE65D2EE75591005416C0 /* AI Voice Watch.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "AI Voice Watch.app";
+			remoteRef = 410AE65C2EE75591005416C0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
+		415DC5B52EBA92D900E34725 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				410AE6622EE755F7005416C0 /* AI Voice Watch.app in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4192653E2EB8C90D00EAB835 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4181B12E2EF174D8007C3246 /* CHANGELOG_2025-12-16.md in Resources */,
+				4181B1292EF174BE007C3246 /* SPECIFICATION.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		415DC5B32EBA92D900E34725 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4192653C2EB8C90D00EAB835 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,7 +379,89 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4121837D2EE76B070023B800 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 415DC5B62EBA92D900E34725 /* AI Voice Watch */;
+			targetProxy = 4121837C2EE76B070023B800 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		415DC5CE2EBA92DC00E34725 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7G8YQW733H;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AI-Voice-Watch-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "AI Voice Watch";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "co.jp.katu0619.ContentView.AI-Voice-Watch";
+				PRODUCT_NAME = "AI Voice Watch";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		415DC5CF2EBA92DC00E34725 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7G8YQW733H;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AI-Voice-Watch-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "AI Voice Watch";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "co.jp.katu0619.ContentView.AI-Voice-Watch";
+				PRODUCT_NAME = "AI Voice Watch";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		419265492EB8C90F00EAB835 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -184,6 +521,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -241,6 +579,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -256,11 +595,16 @@
 				DEVELOPMENT_TEAM = 7G8YQW733H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MedicalRecorder/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "AI Voice to Transecribe";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "医療用会議で使用";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -288,11 +632,16 @@
 				DEVELOPMENT_TEAM = 7G8YQW733H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MedicalRecorder/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "AI Voice to Transecribe";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "医療用会議で使用";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -313,6 +662,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		415DC5D42EBA92DC00E34725 /* Build configuration list for PBXNativeTarget "AI Voice Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				415DC5CE2EBA92DC00E34725 /* Debug */,
+				415DC5CF2EBA92DC00E34725 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4192653B2EB8C90D00EAB835 /* Build configuration list for PBXProject "MedicalRecorder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

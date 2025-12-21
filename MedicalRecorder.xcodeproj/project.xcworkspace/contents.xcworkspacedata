@@ -4,4 +4,19 @@
    <FileRef
       location = "self:">
    </FileRef>
+   <FileRef
+      location = "group:AmiVoiceClient.swift">
+   </FileRef>
+   <FileRef
+      location = "group:RecorderViewModel.swift">
+   </FileRef>
+   <FileRef
+      location = "group:RecordingView.swift">
+   </FileRef>
+   <FileRef
+      location = "group:AMIVOICE_SETUP.md">
+   </FileRef>
+   <FileRef
+      location = "group:IMPLEMENTATION_SUMMARY.md">
+   </FileRef>
 </Workspace>

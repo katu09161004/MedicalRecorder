@@ -17,6 +17,15 @@ struct SettingsView: View {
     @State private var showingResetAlert = false
     @State private var showingPromptList = false
 
+    // アプリバージョン情報
+    private var appVersion: String {
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
+    }
+
+    private var buildNumber: String {
+        Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
+    }
+
     var body: some View {
         NavigationView {
             Form {
@@ -466,6 +475,23 @@ struct SettingsView: View {
                         Label("Keychain使用", systemImage: "lock.shield.fill")
                             .foregroundColor(.green)
                             .font(.caption)
+                    }
+                }
+
+                // アプリ情報
+                Section(header: Text("アプリ情報")) {
+                    HStack {
+                        Text("バージョン")
+                        Spacer()
+                        Text(appVersion)
+                            .foregroundColor(.secondary)
+                    }
+
+                    HStack {
+                        Text("ビルド")
+                        Spacer()
+                        Text(buildNumber)
+                            .foregroundColor(.secondary)
                     }
                 }
             }

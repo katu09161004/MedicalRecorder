@@ -6,7 +6,8 @@
       "Bash(gh repo list:*)",
       "Bash(git remote add:*)",
       "Bash(git push:*)",
-      "Bash(xcodebuild:*)"
+      "Bash(xcodebuild:*)",
+      "Bash(xcrun devicectl device install app:*)"
     ],
     "deny": [],
     "ask": []

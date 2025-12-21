@@ -7,11 +7,12 @@
 
 import SwiftUI
 import WatchConnectivity
+import WatchKit
 
 @main
 struct AI_Voice_WatchApp: App {
-    @WKExtensionDelegateAdaptor(ExtensionDelegate.self) var extensionDelegate
-    
+    @WKApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -19,19 +20,19 @@ struct AI_Voice_WatchApp: App {
     }
 }
 
-// MARK: - Extension Delegate
+// MARK: - App Delegate
 
 /// アプリ起動時に Watch Connectivity を早期初期化
-class ExtensionDelegate: NSObject, WKExtensionDelegate {
+class AppDelegate: NSObject, WKApplicationDelegate {
     func applicationDidFinishLaunching() {
         print("⌚ === Watch アプリ起動 ===")
-        
+
         // Watch Connectivity の早期初期化
         if WCSession.isSupported() {
             let session = WCSession.default
             session.activate()
             print("⌚ WCSession 早期アクティベーション完了")
-            
+
             // デバッグ情報
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 print("⌚ activationState: \(session.activationState.rawValue)")
@@ -41,11 +42,11 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             print("❌ Watch Connectivity サポートなし")
         }
     }
-    
+
     func applicationDidBecomeActive() {
         print("⌚ アプリがアクティブになりました")
     }
-    
+
     func applicationWillResignActive() {
         print("⌚ アプリが非アクティブになります")
     }

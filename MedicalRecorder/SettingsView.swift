@@ -16,6 +16,7 @@ struct SettingsView: View {
     @State private var showingSaveAlert = false
     @State private var showingResetAlert = false
     @State private var showingPromptList = false
+    @State private var showingHelp = false
 
     // アプリバージョン情報
     private var appVersion: String {
@@ -493,6 +494,17 @@ struct SettingsView: View {
                         Text(buildNumber)
                             .foregroundColor(.secondary)
                     }
+
+                    Button(action: { showingHelp = true }) {
+                        HStack {
+                            Image(systemName: "questionmark.circle.fill")
+                                .foregroundColor(.blue)
+                            Text("ヘルプ・操作マニュアル")
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.secondary)
+                        }
+                    }
                 }
             }
             .navigationTitle("設定")
@@ -515,6 +527,9 @@ struct SettingsView: View {
             }
             .sheet(isPresented: $showingPromptList) {
                 PromptListView()
+            }
+            .sheet(isPresented: $showingHelp) {
+                HelpView()
             }
         }
     }

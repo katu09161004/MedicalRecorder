@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		410AE6622EE755F7005416C0 /* AI Voice Watch.app in Resources */ = {isa = PBXBuildFile; fileRef = 410AE65D2EE75591005416C0 /* AI Voice Watch.app */; };
+		415DC5D12EBA92DC00E34725 /* AI Voice Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 415DC5B72EBA92D900E34725 /* AI Voice Watch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4181B1292EF174BE007C3246 /* SPECIFICATION.md in Resources */ = {isa = PBXBuildFile; fileRef = 4181B1282EF174BE007C3246 /* SPECIFICATION.md */; };
 		4181B12E2EF174D8007C3246 /* CHANGELOG_2025-12-16.md in Resources */ = {isa = PBXBuildFile; fileRef = 4181B12D2EF174D8007C3246 /* CHANGELOG_2025-12-16.md */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
+				415DC5D12EBA92DC00E34725 /* AI Voice Watch.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,11 +218,13 @@
 				415DC5B32EBA92D900E34725 /* Sources */,
 				415DC5B42EBA92D900E34725 /* Frameworks */,
 				415DC5B52EBA92D900E34725 /* Resources */,
-				415DC5D02EBA92DC00E34725 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				415DC5C72EBA92DB00E34725 /* AI Voice Watch App */,
 			);
 			name = "AI Voice Watch";
 			packageProductDependencies = (
@@ -236,6 +240,7 @@
 				4192653C2EB8C90D00EAB835 /* Sources */,
 				4192653D2EB8C90D00EAB835 /* Frameworks */,
 				4192653E2EB8C90D00EAB835 /* Resources */,
+				415DC5D02EBA92DC00E34725 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
@@ -410,11 +415,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "co.jp.katu0619.ContentView.MedicalRecorder.watchkitapp";
 				PRODUCT_NAME = "AI Voice Watch";
 				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Debug;
 		};
@@ -440,11 +445,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "co.jp.katu0619.ContentView.MedicalRecorder.watchkitapp";
 				PRODUCT_NAME = "AI Voice Watch";
 				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Release;
 		};

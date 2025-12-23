@@ -8,7 +8,11 @@
       "Bash(git push:*)",
       "Bash(xcodebuild:*)",
       "Bash(xcrun devicectl device install app:*)",
-      "Bash(xcrun devicectl:*)"
+      "Bash(xcrun devicectl:*)",
+      "Bash(xcrun xctrace:*)",
+      "Bash(xcrun simctl:*)",
+      "Bash(instruments:*)",
+      "Bash(open:*)"
     ],
     "deny": [],
     "ask": []

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import MessageUI
 
 struct MainView: View {
     @StateObject private var recorder = Recorder()
@@ -27,6 +28,14 @@ struct MainView: View {
     // 音声インポート
     @State private var showingAudioImport = false
     @ObservedObject private var audioImporter = AudioImporter.shared
+
+    // 録音ファイル一覧
+    @State private var showingRecordingsList = false
+    @State private var recordingFiles: [URL] = []
+
+    // メール送信
+    @StateObject private var mailManager = MailManager.shared
+    @State private var showingMailComposer = false
     
     var body: some View {
         NavigationView {
@@ -203,20 +212,39 @@ struct MainView: View {
                 .disabled(networkManager.isUploading)
                 .padding(.horizontal)
 
-                // 音声ファイルインポートボタン
+                // 音声ファイルインポートボタン & 録音一覧ボタン
                 if !recorder.isRecording && !networkManager.isUploading {
-                    Button(action: { showingAudioImport = true }) {
-                        HStack(spacing: 12) {
-                            Image(systemName: "square.and.arrow.down")
-                                .font(.system(size: 20))
-                            Text("音声ファイルをインポート")
-                                .font(.subheadline)
+                    HStack(spacing: 12) {
+                        Button(action: { showingAudioImport = true }) {
+                            HStack(spacing: 8) {
+                                Image(systemName: "square.and.arrow.down")
+                                    .font(.system(size: 18))
+                                Text("インポート")
+                                    .font(.subheadline)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
+                            .background(Color.secondary.opacity(0.2))
+                            .foregroundColor(.primary)
+                            .cornerRadius(10)
                         }
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 12)
-                        .background(Color.secondary.opacity(0.2))
-                        .foregroundColor(.primary)
-                        .cornerRadius(10)
+
+                        Button(action: {
+                            loadRecordingFiles()
+                            showingRecordingsList = true
+                        }) {
+                            HStack(spacing: 8) {
+                                Image(systemName: "list.bullet")
+                                    .font(.system(size: 18))
+                                Text("録音一覧")
+                                    .font(.subheadline)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
+                            .background(Color.secondary.opacity(0.2))
+                            .foregroundColor(.primary)
+                            .cornerRadius(10)
+                        }
                     }
                     .padding(.horizontal)
                 }
@@ -311,6 +339,32 @@ struct MainView: View {
                     }
                 }
             }
+            .sheet(isPresented: $showingRecordingsList) {
+                RecordingsListView(
+                    recordingFiles: $recordingFiles,
+                    onSendMail: { url in
+                        sendMail(audioURL: url)
+                    },
+                    onDelete: { url in
+                        deleteRecording(url: url)
+                    }
+                )
+            }
+            .sheet(isPresented: $showingMailComposer) {
+                if mailManager.canSendMail {
+                    MailComposerView(mailManager: mailManager) {
+                        showingMailComposer = false
+                    }
+                }
+            }
+            .alert("メールエラー", isPresented: .init(
+                get: { mailManager.mailError != nil },
+                set: { if !$0 { mailManager.mailError = nil } }
+            )) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text(mailManager.mailError ?? "")
+            }
         }
         .onAppear {
             setupWatchConnectivity()
@@ -391,6 +445,45 @@ struct MainView: View {
         }
     }
     
+    // MARK: - 録音ファイル一覧の読み込み
+    private func loadRecordingFiles() {
+        let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        do {
+            let files = try FileManager.default.contentsOfDirectory(at: documentsPath, includingPropertiesForKeys: [.creationDateKey], options: .skipsHiddenFiles)
+            recordingFiles = files.filter { $0.pathExtension.lowercased() == "m4a" || $0.pathExtension.lowercased() == "wav" }
+                .sorted { url1, url2 in
+                    let date1 = (try? url1.resourceValues(forKeys: [.creationDateKey]).creationDate) ?? Date.distantPast
+                    let date2 = (try? url2.resourceValues(forKeys: [.creationDateKey]).creationDate) ?? Date.distantPast
+                    return date1 > date2
+                }
+        } catch {
+            print("録音ファイルの読み込みエラー: \(error)")
+            recordingFiles = []
+        }
+    }
+
+    // MARK: - メール送信
+    private func sendMail(audioURL: URL) {
+        showingRecordingsList = false
+        if mailManager.canSendMail {
+            mailManager.prepareToSendMail(audioURL: audioURL)
+            showingMailComposer = true
+        } else {
+            alertMessage = "メールアカウントが設定されていません。設定アプリでメールを設定してください。"
+            showingAlert = true
+        }
+    }
+
+    // MARK: - 録音ファイルの削除
+    private func deleteRecording(url: URL) {
+        do {
+            try FileManager.default.removeItem(at: url)
+            loadRecordingFiles()
+        } catch {
+            print("ファイル削除エラー: \(error)")
+        }
+    }
+
     // MARK: - インポートした音声を処理
     private func processImportedAudio(url: URL) {
         showingAudioImport = false
@@ -554,6 +647,124 @@ struct ShareSheet: UIViewControllerRepresentable {
     }
 
     func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
+}
+
+// MARK: - 録音ファイル一覧ビュー
+struct RecordingsListView: View {
+    @Binding var recordingFiles: [URL]
+    var onSendMail: (URL) -> Void
+    var onDelete: (URL) -> Void
+    @Environment(\.dismiss) var dismiss
+
+    var body: some View {
+        NavigationView {
+            Group {
+                if recordingFiles.isEmpty {
+                    VStack(spacing: 16) {
+                        Image(systemName: "waveform")
+                            .font(.system(size: 60))
+                            .foregroundColor(.secondary)
+                        Text("録音ファイルがありません")
+                            .font(.headline)
+                            .foregroundColor(.secondary)
+                    }
+                } else {
+                    List {
+                        ForEach(recordingFiles, id: \.self) { url in
+                            RecordingFileRow(url: url, onSendMail: onSendMail)
+                        }
+                        .onDelete { indexSet in
+                            for index in indexSet {
+                                onDelete(recordingFiles[index])
+                            }
+                        }
+                    }
+                }
+            }
+            .navigationTitle("録音ファイル一覧")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("閉じる") {
+                        dismiss()
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
+            }
+        }
+    }
+}
+
+// MARK: - 録音ファイル行
+struct RecordingFileRow: View {
+    let url: URL
+    var onSendMail: (URL) -> Void
+
+    private var fileName: String {
+        url.deletingPathExtension().lastPathComponent
+    }
+
+    private var fileSize: String {
+        guard let attributes = try? FileManager.default.attributesOfItem(atPath: url.path),
+              let size = attributes[.size] as? Int64 else {
+            return "不明"
+        }
+        let formatter = ByteCountFormatter()
+        formatter.countStyle = .file
+        return formatter.string(fromByteCount: size)
+    }
+
+    private var creationDate: String {
+        guard let attributes = try? FileManager.default.attributesOfItem(atPath: url.path),
+              let date = attributes[.creationDate] as? Date else {
+            return "不明"
+        }
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        formatter.locale = Locale(identifier: "ja_JP")
+        return formatter.string(from: date)
+    }
+
+    private var duration: String {
+        guard let seconds = Recorder.getAudioDuration(url: url) else {
+            return "不明"
+        }
+        let minutes = Int(seconds) / 60
+        let secs = Int(seconds) % 60
+        return String(format: "%d:%02d", minutes, secs)
+    }
+
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(fileName)
+                    .font(.body)
+                    .lineLimit(1)
+                HStack(spacing: 8) {
+                    Label(duration, systemImage: "clock")
+                    Label(fileSize, systemImage: "doc")
+                }
+                .font(.caption)
+                .foregroundColor(.secondary)
+                Text(creationDate)
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+            }
+
+            Spacer()
+
+            Button(action: { onSendMail(url) }) {
+                Image(systemName: "envelope")
+                    .font(.title2)
+                    .foregroundColor(.blue)
+            }
+            .buttonStyle(BorderlessButtonStyle())
+        }
+        .padding(.vertical, 4)
+    }
 }
 
 // MARK: - プレビュー
